@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/from_album"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode = "false"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="20sp"
+            android:gravity="left|center"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:text="从相册选择"/>
+
+
+    <LinearLayout
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line"/>
+
+        <TextView
+            android:id="@+id/take_photo"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode = "false"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="left|center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:textSize="20sp"
+            android:text="拍照"/>
+
+    <LinearLayout
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line"
+        android:layout_marginBottom="22dp"/>
+
+</LinearLayout>

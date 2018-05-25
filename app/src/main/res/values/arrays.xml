@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Types">
+        <item>全部</item>
+        <item>学习</item>
+        <item>工作</item>
+        <item>电影</item>
+        <item>考试</item>
+        <item>游戏</item>
+    </string-array>
+</resources>

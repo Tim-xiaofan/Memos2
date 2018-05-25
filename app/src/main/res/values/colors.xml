@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="background">#FFF</color>
+    <color name="line">#a9a8a8</color>
+    <color name="schedule">#f7f2ca</color>
+    <color name="LIGHT_BLUE">#a7f7f2</color >
+    <color name="LIGHT_GREEN">#5b6e55</color >
+    <color name="CARD_VIEW">#e4e6d6</color >
+    <color name="TOOLS">#e6d9d9d9</color >
+</resources>

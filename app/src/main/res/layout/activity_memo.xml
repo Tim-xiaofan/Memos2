@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/memo_view"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+            </android.support.design.widget.AppBarLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/type_choose_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="left"
+                    android:entries="@array/Types"
+                    android:dropDownWidth="350px"
+                    android:dropDownHeight = "20dp"
+                    android:spinnerMode="dropdown" />
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/show_schedule"
+                    android:visibility="gone"
+                    android:background="@color/schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="5dp"
+                    app:cardCornerRadius="5dp">
+
+                    <LinearLayout
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode = "false"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp">
+
+                        <ImageView
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode = "false"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_action_schedule"
+                            android:gravity="center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/show_schedule_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:gravity="center_vertical"
+                            android:layout_marginRight="5dp"
+                            android:text="10月16"/>
+
+                        <TextView
+                            android:id="@+id/show_schedule_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:gravity="center_vertical"
+                            android:layout_marginRight="5dp"
+                            android:text="10:16"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:visibility="visible"
+                        android:id="@+id/refresh_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/refresh_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="12">
+            <ScrollView
+                android:id="@+id/scroll_view"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode = "true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                >
+
+                <EditText
+                    android:id="@+id/input_text"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode = "true"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    android:hint="Type something here"/>
+            </ScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@color/TOOLS"
+            android:orientation="horizontal"
+            android:id="@+id/tools"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_alignParentBottom="true">
+            <ImageView
+                android:clickable="true"
+                android:id="@+id/add_photo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_action_photo"/>
+
+            <ImageView
+                android:clickable="true"
+                android:id="@+id/edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_action_text"/>
+
+            <ImageView
+                android:clickable="true"
+                android:id="@+id/add_audio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_action_audio"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
