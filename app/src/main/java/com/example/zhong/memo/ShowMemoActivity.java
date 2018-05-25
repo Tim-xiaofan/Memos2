@@ -111,6 +111,7 @@ public class ShowMemoActivity extends AppCompatActivity {
 
     private EditText content;
 
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,7 +142,7 @@ public class ShowMemoActivity extends AppCompatActivity {
             timeView .setText(refreshDate);
         }
         editText =findViewById(R.id.input_text);
-        //ReturnToImage.initContent(content,editText);//还原为图文混排
+        ReturnToImage.initContent(content,editText);//还原为图文混排
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -568,10 +569,6 @@ public class ShowMemoActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        MemoManager memoManager = new MemoManager(linearLayout,fileName);
-        String content = new String(memoManager.loadTxt(fileName));
-        EditText editText =findViewById(R.id.input_text);
-        ReturnToImage.initContent(content,editText);
     }
 
     @Override

@@ -35,6 +35,7 @@ public class ImageAndText {
 
     //region 将图片插入到EditText光标处
     private static void insertPhotoToEditText(SpannableString ss,EditText content){
+        Log.d("ImageInsert", "displayImageAtCursor: before "+content.getText());
         Editable et = content.getText();
         int start = content.getSelectionStart();
         Log.d("Image", "displayImageAtCursor: start "+start);
@@ -44,6 +45,7 @@ public class ImageAndText {
         content.setSelection(start+ss.length());//光标移到图片后面
         content.setFocusableInTouchMode(true);
         content.setFocusable(true);
+        Log.d("ImageInsert", "displayImageAtCursor: after "+content.getText());
     }
 
 

@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                     isUnderDeleting = true;
                 }
             }
-                break;
+            break;
             case R.id.setting:
                 Intent startIntent = new Intent(MainActivity.this, ScheduleService.class);
                 startService(startIntent);

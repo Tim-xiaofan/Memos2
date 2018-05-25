@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.zhong.memo.MemoActivity;
 import com.example.zhong.memo.R;
 import com.example.zhong.memo.ShowMemoActivity;
 import com.example.zhong.memo.db.Memo;
@@ -55,6 +56,8 @@ public class MemoAdapter extends RecyclerView.Adapter <MemoAdapter.ViewHolder>{
 
     String inputText;
 
+    private static final int EDIT_MEMO = 1;
+
     //private boolean isClassified;
 
     SparseBooleanArray mCheckStates=new SparseBooleanArray();
@@ -76,6 +79,7 @@ public class MemoAdapter extends RecyclerView.Adapter <MemoAdapter.ViewHolder>{
                     Intent intent =new Intent(mContext, ShowMemoActivity.class);
                     intent.putExtra("memo_data",memo);
                     intent.putExtra("isUnderGroupView",isUnderGroupView);
+                    intent.putExtra("state",EDIT_MEMO);
                     if(groupShowName.equals("全部")){
                         ((Activity)mContext).startActivityForResult(intent,2);
                     }else{

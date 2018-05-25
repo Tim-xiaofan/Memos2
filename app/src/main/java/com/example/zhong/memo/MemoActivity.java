@@ -153,7 +153,7 @@ public class MemoActivity extends AppCompatActivity {
         scheduleCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               changeSchedule();
+                changeSchedule();
             }
         });
         isSaved = false;
@@ -208,16 +208,16 @@ public class MemoActivity extends AppCompatActivity {
                 requestRuntimePermissions();
                 break;
             }
-                case R.id.save_memo:{
-                    if(!isSaved){//新建
-                        MemoManager memoManager = new MemoManager(linearLayout);
-                        fileName = memoManager.saveMemo(MemoActivity.this);
-                        isSaved = true;
-                    }else{//修改
-                        MemoManager memoManager = new MemoManager(linearLayout,fileName);
-                        memoManager.updateMemo(MemoActivity.this);
-                    }
+            case R.id.save_memo:{
+                if(!isSaved){//新建
+                    MemoManager memoManager = new MemoManager(linearLayout);
+                    fileName = memoManager.saveMemo(MemoActivity.this);
+                    isSaved = true;
+                }else{//修改
+                    MemoManager memoManager = new MemoManager(linearLayout,fileName);
+                    memoManager.updateMemo(MemoActivity.this);
                 }
+            }
             default:break;
         }
         return true;
@@ -609,5 +609,4 @@ public class MemoActivity extends AppCompatActivity {
     }
 
 }
-
 
