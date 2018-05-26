@@ -41,7 +41,7 @@
         <service
             android:name=".Services.ScheduleService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -53,6 +53,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <activity android:name=".ShareActivity"></activity>
     </application>
 
 </manifest>

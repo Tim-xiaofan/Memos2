@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.zhong.memo.MemoActivity;
 import com.example.zhong.memo.R;
 import com.example.zhong.memo.ShowMemoActivity;
 import com.example.zhong.memo.db.Memo;
@@ -26,6 +25,8 @@ import com.example.zhong.memo.db.MemoManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by DELL on 2018/5/12.
@@ -96,7 +97,7 @@ public class MemoAdapter extends RecyclerView.Adapter <MemoAdapter.ViewHolder>{
         Memo memo = mMemoList.get(position);
         MemoManager memoManager = new MemoManager();
         inputText = memoManager.loadTxt(memo.getFileName());
-        holder.memoContent.setText(inputText);
+        holder.memoContent.setText(removeAllImageInText(inputText));
         holder.memoType.setText(memo.getType());
         holder.memoRefreshDateTime.setText(memo.getRefreshDate()+" "+memo.getRefreshTime());
         if(!TextUtils.isEmpty(memo.getScheduleDate())&&!TextUtils.isEmpty(memo.getScheduleTime())){
@@ -104,7 +105,12 @@ public class MemoAdapter extends RecyclerView.Adapter <MemoAdapter.ViewHolder>{
         }else {
             holder.memoScheduleMain.setVisibility(View.GONE);
         }
-        Glide.with(mContext).load(memo.getImageId()).into(holder.memoImage);
+        String path = findFirstImageInText(inputText);
+        if(!TextUtils.isEmpty(path)){//如果有图片就显示
+            Glide.with(mContext).load(path).into(holder.memoImage);
+        }else {//没有就去掉imageView
+            holder.memoImage.setVisibility(View.GONE);
+        }
         if(isUnderSelecting){
             holder.memoCheckBox.setVisibility(View.VISIBLE);
             holder.memoCheckBox.setTag(position);
@@ -131,7 +137,7 @@ public class MemoAdapter extends RecyclerView.Adapter <MemoAdapter.ViewHolder>{
                         //do something
                     }else{
                         mCheckStates.delete(pos);
-                        selectedMemoList.remove(pos);
+                        if(pos<selectedMemoList.size())selectedMemoList.remove(pos);
                         //do something else
                     }
                 }
@@ -252,6 +258,32 @@ public class MemoAdapter extends RecyclerView.Adapter <MemoAdapter.ViewHolder>{
 
     public List<Memo> getSelectedMemoList(){
         return selectedMemoList;
+    }
+
+    private String findFirstImageInText(String inputText){
+        Pattern p = Pattern.compile("\\<img src=\".*?\"\\/>");
+        Matcher m = p.matcher(inputText);
+        while(m.find()){
+            Log.d("YYPT", m.group());
+            //这里s保存的是整个式子，即<img src="xxx"/>，start和end保存的是下标
+            String s = m.group();
+            //path是去掉<img src=""/>的中间的图片路径
+            String path = s.replaceAll("\\<img src=\"|\"\\/>","").trim();
+            return path;//返回第一张图
+        }
+        return null;
+    }
+
+    private String removeAllImageInText(String inputText){
+        Pattern p = Pattern.compile("\\<img src=\".*?\"\\/>");
+        Matcher m = p.matcher(inputText);
+        while(m.find()){
+            String s = m.group();
+            inputText =  inputText.replace(s,"");
+        }
+        inputText = inputText.replaceAll("\n","");
+        inputText = inputText.replaceAll(" ","");
+        return inputText;
     }
 }
 

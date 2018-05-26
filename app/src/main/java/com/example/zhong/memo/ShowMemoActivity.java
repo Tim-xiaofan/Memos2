@@ -63,6 +63,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
@@ -119,7 +120,7 @@ public class ShowMemoActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         linearLayout = findViewById(R.id.memo_view);
         //toolbar.setLogo(R.drawable.apple_pic);
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         Memo memo = (Memo)intent.getSerializableExtra("memo_data");
         isUnderGroupView = intent.getBooleanExtra("isUnderGroupView",false);
         String title = memo.getType();
@@ -220,6 +221,15 @@ public class ShowMemoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showDialogAddPhoto();
+            }
+        });
+        ImageView shareView = findViewById(R.id.add_share);
+        shareView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent  intent = new Intent(ShowMemoActivity.this,ShareActivity.class);
+                intent.putExtra("file_name",fileName);
+                startActivity(intent);
             }
         });
     }
@@ -646,21 +656,21 @@ public class ShowMemoActivity extends AppCompatActivity {
 
     public void showDialogAddPhoto(){//添加图片,拍照或选则
         //textView = scheduleCardView.findViewById(R.id.show_schedule_text);
-        final AlertDialog.Builder dialog = new AlertDialog.Builder(ShowMemoActivity.this);
-        dialog.setTitle("设置提醒");
-        dialog.create();
-        dialog.setCancelable(true);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ShowMemoActivity.this);
+        builder.setTitle("设置提醒");
+        builder.create();
+        builder.setCancelable(true);
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.alertdialog_add_photo, null);
-        dialog.setView(view);
-        dialog.show();
+        builder.setView(view);
+        final AlertDialog dialog = builder.show();
         TextView takePhoto = view.findViewById(R.id.take_photo);
         TextView choosePhoto = view.findViewById(R.id.from_album);
         takePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //File obj to store picture
-                File outputImage = new File(getExternalCacheDir(),"output_image.jpg");
+                File outputImage = new File(getExternalCacheDir(),(new Date()).getTime()+".jpg");
                 try{
                     if(outputImage.exists()){
                         outputImage.delete();
@@ -679,6 +689,7 @@ public class ShowMemoActivity extends AppCompatActivity {
                 Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                 intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
                 startActivityForResult(intent,TAKE_PHOTO);
+                dialog.dismiss();
             }
         });
         choosePhoto.setOnClickListener(new View.OnClickListener() {
@@ -691,6 +702,7 @@ public class ShowMemoActivity extends AppCompatActivity {
                 }else {
                     Album.openAlbum(ShowMemoActivity.this);//打开相册
                 }
+                dialog.dismiss();
             }
         });
     }
@@ -701,14 +713,10 @@ public class ShowMemoActivity extends AppCompatActivity {
         switch(requestCode){
             case TAKE_PHOTO:
                 if(resultCode == RESULT_OK){
-                    try {
-                        //take out the photo
-                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().
-                                openInputStream(imageUri));
-                        //picture.setImageBitmap(bitmap);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                    //take out the photo
+                    String s = imageUri+"";
+                    String path = s.replace("file://","");
+                    ImageAndText.displayImageAtCursor(path,editText);
                 }
                 break;
             case CHOOSE_PHOTO:

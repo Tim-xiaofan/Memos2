@@ -2,6 +2,7 @@ package com.example.zhong.memo.ui;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -25,6 +26,26 @@ public class ImageAndText {
             if (bitmap != null) {
                 SpannableString ss = getBitmapMime(imagePath,tagPath);
                 Log.d("Image", "displayImageAtCursor: ss "+ss);
+                content.append("                           ");
+                content.append("\n");
+                insertPhotoToEditText(ss,content);
+            }
+        }else{
+            Toast.makeText(MyApplication.getContext(),"Failed to get image",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public static void displayImageAtCursor(Uri imageUri, EditText content) {//将图片显示在文字中
+        String s = imageUri.toString();
+        String imagePath = s.replace("file://","");
+        if(imageUri != null){
+            String tagPath = "<img src=\""+imageUri+"\"/>";//为图片路径加上<img>标签
+            Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+            Log.d("Image", "displayImageAtCursor: "+bitmap);
+            if (bitmap != null) {
+                SpannableString ss = getBitmapMime(imagePath,tagPath);
+                Log.d("Image", "displayImageAtCursor: ss "+ss);
+                content.append("                           ");
                 content.append("\n");
                 insertPhotoToEditText(ss,content);
             }
@@ -52,7 +73,7 @@ public class ImageAndText {
     private static SpannableString getBitmapMime(String path,String tagPath) {
         SpannableString ss = new SpannableString(tagPath);//这里使用加了<img>标签的图片路径
         int width = ScreenUtils.getScreenWidth(MyApplication.getContext());
-        //int height = ScreenUtils.getScreenHeight(MyApplication.getContext());
+        int height = ScreenUtils.getScreenHeight(MyApplication.getContext());
         Bitmap bitmap = ImageUtils.getSmallBitmap(path,width,480);
         ImageSpan imageSpan = new ImageSpan(MyApplication.getContext(), bitmap);
         ss.setSpan(imageSpan, 0, tagPath.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
