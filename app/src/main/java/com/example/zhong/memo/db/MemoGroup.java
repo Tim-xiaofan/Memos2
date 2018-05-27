@@ -5,9 +5,7 @@ import org.litepal.crud.DataSupport;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by DELL on 2018/5/12.
- */
+
 
 public class MemoGroup extends DataSupport{
 

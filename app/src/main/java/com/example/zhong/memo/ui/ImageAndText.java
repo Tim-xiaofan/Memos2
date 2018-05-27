@@ -12,10 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.zhong.memo.util.MyApplication;
 
-/**
- * Created by DELL on 2018/5/24.
- */
-
 public class ImageAndText {
 
     public static void displayImageAtCursor(String imagePath, EditText content) {//将图片显示在文字中

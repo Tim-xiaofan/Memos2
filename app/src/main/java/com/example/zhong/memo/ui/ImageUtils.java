@@ -1,8 +1,5 @@
 package com.example.zhong.memo.ui;
 
-/**
- * Created by DELL on 2018/5/24.
- */
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -19,9 +16,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
 
-/**
- * Created by sendtion on 2016/5/25.
- */
 public class ImageUtils {
 
     /**

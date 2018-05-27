@@ -28,9 +28,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by DELL on 2018/5/12.
- */
 public class MemoAdapter extends RecyclerView.Adapter <MemoAdapter.ViewHolder>{
 
     private Context mContext;

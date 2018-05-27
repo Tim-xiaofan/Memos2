@@ -7,10 +7,6 @@ import org.litepal.crud.DataSupport;
 
 import java.io.Serializable;
 
-/**
- * Created by DELL on 2018/5/12.
- */
-
 
 public class Memo extends DataSupport implements Serializable{
 

@@ -30,7 +30,7 @@ import java.io.IOException;
 import static com.example.zhong.memo.MemoActivity.CHOOSE_PHOTO;
 
 /**
- * Created by DELL on 2018/5/24.
+ * Created by DELL
  */
 
 public class Album {

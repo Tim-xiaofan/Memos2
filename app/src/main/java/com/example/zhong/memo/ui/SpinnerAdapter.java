@@ -12,9 +12,6 @@ import com.example.zhong.memo.db.MemoGroup;
 
 import java.util.List;
 
-/**
- * Created by DELL on 2018/5/13.
- */
 
 public class SpinnerAdapter extends BaseAdapter{
 

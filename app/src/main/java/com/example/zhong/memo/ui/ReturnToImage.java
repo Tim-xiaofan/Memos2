@@ -17,9 +17,6 @@ import com.example.zhong.memo.util.MyApplication;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by DELL on 2018/5/24.
- */
 
 public class ReturnToImage {
 

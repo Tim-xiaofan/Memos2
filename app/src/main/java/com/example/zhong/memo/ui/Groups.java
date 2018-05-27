@@ -6,9 +6,6 @@ import com.example.zhong.memo.db.MemoGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by DELL on 2018/5/12.
- */
 
 public class Groups {
 

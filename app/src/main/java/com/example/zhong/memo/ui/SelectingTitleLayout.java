@@ -15,9 +15,6 @@ import android.widget.TextView;
 import com.example.zhong.memo.MainActivity;
 import com.example.zhong.memo.R;
 
-/**
- * Created by DELL on 2018/5/14.
- */
 
 public class SelectingTitleLayout extends LinearLayout {
     public SelectingTitleLayout(Context context) {
