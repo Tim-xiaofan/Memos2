@@ -92,7 +92,7 @@ public class MemoManager {
         scheduleTime = textView.getText().toString();
         MemoGroup memoGroup = (MemoGroup) spinner.getSelectedItem();
         type = memoGroup.getGroupName();
-        memo = new Memo(type, R.drawable.apple_pic);
+        memo = new Memo(type, R.drawable.ink);
         memo.setFileName((new Date()).getTime() + "");
         memo.setRefreshDate(calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/"
                 + calendar.get(Calendar.DAY_OF_MONTH));
@@ -123,7 +123,7 @@ public class MemoManager {
         scheduleTime = textView.getText().toString();
         MemoGroup memoGroup = (MemoGroup) spinner.getSelectedItem();
         type = memoGroup.getGroupName();
-        memo = new Memo(type, R.drawable.apple_pic);
+        memo = new Memo(type, R.drawable.ink);
         memo.setFileName(fileName);
         memo.setRefreshDate(calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/"
                 + calendar.get(Calendar.DAY_OF_MONTH));

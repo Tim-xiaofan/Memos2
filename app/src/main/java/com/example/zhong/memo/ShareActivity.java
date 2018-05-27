@@ -1,23 +1,18 @@
 package com.example.zhong.memo;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.zhong.memo.db.MemoManager;
@@ -43,7 +38,7 @@ public class ShareActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         ImageView codeImage = findViewById(R.id.weixin_code);
-        Glide.with(ShareActivity.this).load(R.drawable.ic_mmqrcode).into(codeImage);
+        Glide.with(ShareActivity.this).load(R.drawable.ic_action_note).into(codeImage);
         scrollView = findViewById(R.id.scroll_view);
         Intent intent = getIntent();
         fileName = intent.getStringExtra("file_name");

@@ -23,28 +23,6 @@ import java.util.regex.Pattern;
 
 public class ReturnToImage {
 
-
-    /*public static void initContent(String input, EditText editText) {
-        Html.ImageGetter imageGetter = new Html.ImageGetter(){
-            @Override
-            public Drawable getDrawable(String s) {
-                /*int width = ScreenUtils.getScreenWidth(MyApplication.getContext());
-                int height = ScreenUtils.getScreenHeight(MyApplication.getContext());
-                Bitmap bitmap = ImageUtils.getSmallBitmap(s,width,480);
-                Drawable drawable = new BitmapDrawable(bitmap);
-                drawable.setBounds(0,0,width,height);
-                Log.d("initContent", "getDrawable: s "+s);
-                Drawable drawable = null;
-                drawable = Drawable.createFromPath(s);
-                drawable.setBounds(0,0,480,480);
-                return drawable;
-            }
-        };
-        editText.setText(Html.fromHtml(input, imageGetter,null));
-    }*/
-
-
-
     public static void initContent(String input, EditText editText) {
         //String regex = "<img src=\\".*?\\"\\/>";
         Pattern p = Pattern.compile("\\<img src=\".*?\"\\/>");

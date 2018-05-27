@@ -74,70 +74,17 @@ public class Album {
         return imagePath;
     }
 
-    private static String getImagePath(Uri uri,String selection){
+    private static String getImagePath(Uri uri,String selection) {
         String path = null;
         //Get path through Uri and selection
-        Cursor cursor = MyApplication.getContext().getContentResolver().query(uri,null,
-                selection, null,null);
-        if(cursor != null){
-            if(cursor.moveToNext()){
+        Cursor cursor = MyApplication.getContext().getContentResolver().query(uri, null,
+                selection, null, null);
+        if (cursor != null) {
+            if (cursor.moveToNext()) {
                 path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
             }
             cursor.close();
         }
         return path;
     }
-
-    /*public static Uri getPhotoUri( final int requestCode){//添加图片
-        //textView = scheduleCardView.findViewById(R.id.show_schedule_text);
-        final Context context = MyApplication.getContext();
-        final AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-        dialog.setTitle("设置提醒");
-        dialog.create();
-        dialog.setCancelable(true);
-        LayoutInflater inflater = LayoutInflater.from(MyApplication.getContext());
-        View view = inflater.inflate(R.layout.alertdialog_add_photo, null);
-        dialog.setView(view);
-        dialog.show();
-        TextView takePhoto = view.findViewById(R.id.take_photo);
-        TextView choosePhoto = view.findViewById(R.id.from_album);
-        takePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //File obj to store picture
-                File outputImage = new File(context.getExternalCacheDir(),"output_image.jpg");
-                try{
-                    if(outputImage.exists()){
-                        outputImage.delete();
-                    }
-                    outputImage.createNewFile();
-                }catch(IOException e){
-                    e.printStackTrace();
-                }
-                if(Build.VERSION.SDK_INT >=24){//Android 7.0 and above
-                    imageUri = FileProvider.getUriForFile(context,
-                            "com.example.zhong.memo.fileprovider",outputImage);
-                }else{
-                    imageUri = Uri.fromFile(outputImage);
-                }
-                //启动相机程序
-                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
-                ((Activity)context).startActivityForResult(intent,requestCode);
-            }
-        });
-        choosePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(ContextCompat.checkSelfPermission(context, Manifest.permission
-                        .WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions((Activity) context, new
-                            String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE},CHOOSE_PHOTO);
-                }else {
-                    Album.openAlbum((Activity) context);
-                }
-            }
-        });
-        return imageUri;
-    }*/
 }
